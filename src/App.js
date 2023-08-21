@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'; // Importe o componente "Routes" do react-router-dom
+import Header from './Header/header';
+import Detalhes from './pages/Home/Detalhes';
+import Home from './pages/Home/Home';
+import CadastroReceita from './pages/Home/CadastroReceita';
+import Receitas from "./pages/Home/Receitas"
+import { ReceitaProvider } from './contexts/ReceitaContext'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <BrowserRouter>
+    <Header />
+    <ReceitaProvider>
+    <Routes> {/* Troque o componente "Switch" por "Routes" */}
+     {/* <Route path="/" exact element={<Home/>} />
+      <Route path="/detalhes/:id" element={<Detalhes/>} />
+  <Route path="/cadastro" element={<CadastroReceita/>} />*/}
+  <Route path='/' element={<Receitas/>}/>
+    </Routes>
+    </ReceitaProvider>
+</BrowserRouter>)
 }
 
 export default App;
